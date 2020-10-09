@@ -1,0 +1,3 @@
+include ':nesp-sdk-java'
+include ':app'
+rootProject.name = "NespSdkJavaSample"
