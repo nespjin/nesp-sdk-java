@@ -2,6 +2,10 @@ apply plugin: 'java-library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation files('libs/activation.jar','libs/additionnal.jar','libs/mail.jar')
 }
 
 sourceCompatibility = "1.8"
