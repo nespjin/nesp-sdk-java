@@ -22,6 +22,15 @@ dependencies {
     api 'com.google.code.gson:gson:2.8.5'
     api 'com.squareup.okhttp3:okhttp:4.4.0'
     implementation files('libs/activation.jar','libs/additionnal.jar','libs/mail.jar')
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
+
+}
+
+test {
+    useJUnitPlatform()
 }
 
 sourceCompatibility = "1.8"
