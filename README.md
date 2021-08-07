@@ -8,6 +8,9 @@ Nesp Java Sdk is a collection of Java library, write with Java 8, follow
 Nesp Java Sdk is a suite of library to help developers follow best practices,
 reduce boilerplate code, so that developers can focus on the code they care about.
 
+## Info
+- **Language Level**: Java-8
+- **Compatible**: JPMS.
 
 ## API Usage Samples
 for api doc to see [Nesp Java SDK API Reference]()

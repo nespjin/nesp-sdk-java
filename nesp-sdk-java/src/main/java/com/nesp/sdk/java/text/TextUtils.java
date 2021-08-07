@@ -17,7 +17,7 @@ public class TextUtils {
     }
 
     public static boolean isEmpty(CharSequence cs) {
-        return cs == null || cs.isEmpty();
+        return cs == null || cs.length() == 0;
     }
 
 }

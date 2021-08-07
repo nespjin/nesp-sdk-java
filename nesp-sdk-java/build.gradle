@@ -16,12 +16,16 @@
 
 apply plugin: 'java-library'
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     api 'com.google.code.gson:gson:2.8.5'
     api 'com.squareup.okhttp3:okhttp:4.4.0'
-    implementation files('libs/activation.jar','libs/additionnal.jar','libs/mail.jar')
+    implementation files('libs/activation.jar', 'libs/additionnal.jar', 'libs/mail.jar')
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
@@ -35,3 +39,24 @@ test {
 
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
+
+sourceSets {
+    main {
+        java {
+            exclude 'module-info.java'
+        }
+    }
+    mainModuleInfo { // module-info only
+        java {
+            srcDirs = ['src/main/java']
+            outputDir = file("$buildDir/classes/java/main")
+            include 'module-info.java'
+        }
+    }
+}
+
+classes.dependsOn mainModuleInfoClasses
+
+compileJava.options.compilerArgs.addAll(['--release', '8'])
+compileMainModuleInfoJava.options.compilerArgs.addAll(['--release', '16'])
+
