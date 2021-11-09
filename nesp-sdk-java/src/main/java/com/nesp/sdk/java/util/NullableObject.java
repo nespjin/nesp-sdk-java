@@ -1,7 +1,7 @@
 package com.nesp.sdk.java.util;
 
-import com.nesp.sdk.java.annotation.Nullable;
 import com.nesp.sdk.java.annotation.NonNull;
+import com.nesp.sdk.java.annotation.Nullable;
 
 import java.util.Objects;
 

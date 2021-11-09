@@ -1,15 +1,12 @@
 package com.nesp.sdk.java.util;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * Team: NESP Technology
  * Author: <a href="mailto:1756404649@qq.com">JinZhaolu Email:1756404649@qq.com</a>
  * Time: Created 2021/8/3 22:28
- * Project: PasswordManagerJavaFx
  * Description:
  **/
 public final class Log {

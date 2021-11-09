@@ -17,10 +17,6 @@ package com.nesp.sdk.java;
 
 import com.nesp.sdk.java.ranges.IntRange;
 import com.nesp.sdk.java.util.ArrayListCompat;
-import com.nesp.sdk.java.util.PredicateIndexed;
-
-import java.util.Collections;
-import java.util.function.Predicate;
 
 /**
  * The main class for jdk, write test code here.
