@@ -97,16 +97,22 @@ public class TypeRecycleWatcher<T> {
         @Override
         @SuppressWarnings("all")
         public void run() {
-            boolean printed = false;
+            long lastPrint = 0;
             while (true) {
                 final Reference<? extends T> poll = mTPhantomReferenceQueue.poll();
                 if (poll != null) {
                     mMonitor.remove(poll);
                     System.out.println(TAG + ": 引用被回收: " + poll);
+
                 }
-                System.out.println(TAG + ": mMonitor.size(): " + mMonitor.size());
+
+                if (System.currentTimeMillis() - lastPrint >= 3000) {
+                    System.out.println(TAG + ": mMonitor.size(): " + mMonitor.size());
+                    lastPrint = System.currentTimeMillis();
+                }
+
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
