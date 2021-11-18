@@ -23,13 +23,13 @@ tasks.withType(JavaCompile) {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api 'com.google.code.gson:gson:2.8.5'
-    api 'com.squareup.okhttp3:okhttp:4.4.0'
+    api 'com.google.code.gson:gson:2.8.9'
+    api 'com.squareup.okhttp3:okhttp:4.9.2'
     implementation files('libs/activation.jar', 'libs/additionnal.jar', 'libs/mail.jar')
 
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.8.1')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.1')
 
 }
 
