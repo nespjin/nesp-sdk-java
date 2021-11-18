@@ -7,4 +7,5 @@ module com.nesp.sdk.java {
     exports com.nesp.sdk.java.ranges;
     exports com.nesp.sdk.java.text;
     exports com.nesp.sdk.java.util;
+    exports com.nesp.sdk.java.lang;
 }
