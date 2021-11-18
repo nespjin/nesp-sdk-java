@@ -101,19 +101,10 @@ public class TypeRecycleWatcher<T> {
             while (true) {
                 final Reference<? extends T> poll = mTPhantomReferenceQueue.poll();
                 if (poll != null) {
-                    final WeakReference<T> tWeakReference = mMonitor.get(poll);
-                    if (tWeakReference != null) {
-                        final T t = tWeakReference.get();
-                        if (t != null) {
-                            System.out.println(TAG + ": 引用被回收: " + t);
-                            printed = true;
-                        }
-                    }
+                    mMonitor.remove(poll);
                     System.out.println(TAG + ": 引用被回收: " + poll);
                 }
                 System.out.println(TAG + ": mMonitor.size(): " + mMonitor.size());
-                printed = false;
-                mMonitor.remove(poll);
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
