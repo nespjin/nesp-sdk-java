@@ -16,6 +16,10 @@
 
 apply plugin: 'java-library'
 
+
+group 'com.nesp.sdk.java'
+version '1.0-alpha'
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
