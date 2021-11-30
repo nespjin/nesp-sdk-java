@@ -62,5 +62,5 @@ sourceSets {
 classes.dependsOn mainModuleInfoClasses
 
 compileJava.options.compilerArgs.addAll(['--release', '8'])
-compileMainModuleInfoJava.options.compilerArgs.addAll(['--release', '16'])
+compileMainModuleInfoJava.options.compilerArgs.addAll(['--release', '17'])
 
