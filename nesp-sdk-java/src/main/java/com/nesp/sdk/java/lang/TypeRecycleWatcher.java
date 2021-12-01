@@ -31,7 +31,9 @@ import java.util.WeakHashMap;
  **/
 public class TypeRecycleWatcher<T> {
 
-    private static final String TAG = "ObjectRecycleWatcher";
+    public static boolean sLogEnable = false;
+
+    private static final String TAG = "TypeRecycleWatcher";
 
     private final ReferenceQueue<T> mTPhantomReferenceQueue;
     private final Map<PhantomReference<T>, WeakReference<T>> mMonitor;
@@ -73,9 +75,9 @@ public class TypeRecycleWatcher<T> {
 
 
     public void judgeMemory(T obj) {
-        System.out.println(TAG + ": 判断是否内存泄漏: ");
+        if (sLogEnable) System.out.println(TAG + ": 判断是否内存泄漏: ");
         for (WeakReference<T> weakReference : mMonitor.values()) {
-            System.out.println(TAG + ": 内存泄漏对象: " + weakReference.get());
+            if (sLogEnable) System.out.println(TAG + ": 内存泄漏对象: " + weakReference.get());
         }
     }
 
@@ -102,12 +104,13 @@ public class TypeRecycleWatcher<T> {
                 final Reference<? extends T> poll = mTPhantomReferenceQueue.poll();
                 if (poll != null) {
                     mMonitor.remove(poll);
-                    System.out.println(TAG + ": 引用被回收: " + poll);
+                    if (sLogEnable) System.out.println(TAG + ": 引用被回收: " + poll);
 
                 }
 
                 if (System.currentTimeMillis() - lastPrint >= 3000) {
-                    System.out.println(TAG + ": mMonitor.size(): " + mMonitor.size());
+                    if (sLogEnable)
+                        System.out.println(TAG + ": mMonitor.size(): " + mMonitor.size());
                     lastPrint = System.currentTimeMillis();
                 }
 
