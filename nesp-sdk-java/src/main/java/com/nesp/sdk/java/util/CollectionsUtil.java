@@ -25,7 +25,10 @@ import java.util.Collection;
  * Time: Created 2020/9/27 1:31
  * Project: nesp-sdk-java
  **/
-public class CollectionsUtil {
+public final class CollectionsUtil {
+
+    private CollectionsUtil() {
+    }
 
     public static <E> boolean isNotEmpty(Collection<E> collection) {
         return !collection.isEmpty();
