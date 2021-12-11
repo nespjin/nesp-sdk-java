@@ -75,17 +75,10 @@ sourceSets {
     }
 }
 
-<<<<<<< HEAD
-classes.dependsOn mainModuleInfoClasses
-
-compileJava.options.compilerArgs.addAll(['--release', '8'])
-compileMainModuleInfoJava.options.compilerArgs.addAll(['--release', '17'])
-=======
 if (JavaVersion.toVersion(sourceCompatibility) == JavaVersion.VERSION_1_8) {
     compileJava.options.compilerArgs.addAll(['--release', '8'])
 } else {
     classes.dependsOn mainModuleInfoClasses
     compileMainModuleInfoJava.options.compilerArgs.addAll(['--release', '16'])
 }
->>>>>>> 683f6101461d7969f85e0eec7c341b4bd943b659
 
