@@ -1,5 +1,7 @@
 module com.nesp.sdk.java {
     requires java.base;
+    requires com.google.gson;
+    requires okhttp3;
 
     exports com.nesp.sdk.java;
     exports com.nesp.sdk.java.annotation;
