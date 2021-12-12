@@ -16,7 +16,7 @@
 
 package com.nesp.sdk.java.net;
 
-import com.nesp.sdk.java.text.TextUtils;
+import com.nesp.sdk.java.text.TextUtil;
 
 import java.net.URI;
 import java.util.Collections;
@@ -38,7 +38,7 @@ public final class UriUtil {
     public static Map<String, String> params(final URI uri) {
         if (uri == null) return Collections.emptyMap();
         final String query = uri.getQuery();
-        if (TextUtils.isEmpty(query)) return Collections.emptyMap();
+        if (TextUtil.isEmpty(query)) return Collections.emptyMap();
 
         final Map<String, String> params = new HashMap<>();
         final String[] paramPairs = query.split("&");
