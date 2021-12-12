@@ -25,8 +25,8 @@ import java.security.NoSuchAlgorithmException;
  * Time: Created 2021/11/17 上午11:08
  * Description:
  **/
-public final class SecurityUtils {
-    private SecurityUtils() {
+public final class SecurityUtil {
+    private SecurityUtil() {
     }
 
     public static String md5(String text) {
