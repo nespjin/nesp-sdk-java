@@ -28,6 +28,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'com.alibaba:fastjson:1.2.78'
+    implementation 'org.json:json:20210307'
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.3'
 
