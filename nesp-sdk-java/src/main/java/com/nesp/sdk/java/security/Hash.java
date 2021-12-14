@@ -23,6 +23,9 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+
 /**
  * Team: NESP Technology
  *
@@ -123,6 +126,41 @@ public final class Hash {
         final byte[] hashByteArray = getHashByteArray(source, "SHA");
         if (hashByteArray == null) return null;
         return byteArrayToHex(hashByteArray).toLowerCase();
+    }
+
+    /**
+     * SHA加密
+     *
+     * @param strSrc 明文
+     * @return 加密之后的密文
+     */
+    public static String sha256(String strSrc) {
+        MessageDigest md = null;
+        String strDes = null;
+        byte[] bt = strSrc.getBytes();
+        try {
+            md = MessageDigest.getInstance("SHA-256");// 将此换成SHA-1、SHA-512、SHA-384等参数
+            md.update(bt);
+
+            strDes = byteArrayToHex(md.digest()); // to HexString
+        } catch (NoSuchAlgorithmException e) {
+            return null;
+        }
+        return strDes;
+    }
+
+    public static String hMacSha256(String message, String secret) {
+        String hash = "";
+        try {
+            Mac sha256_HMAC = Mac.getInstance("HmacSHA256");
+            SecretKeySpec secret_key = new SecretKeySpec(secret.getBytes(), "HmacSHA256");
+            sha256_HMAC.init(secret_key);
+            byte[] bytes = sha256_HMAC.doFinal(message.getBytes());
+            hash = byteArrayToHex(bytes);
+        } catch (Exception ignored) {
+
+        }
+        return hash;
     }
 
     /**

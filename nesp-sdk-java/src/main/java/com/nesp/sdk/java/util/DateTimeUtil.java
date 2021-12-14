@@ -505,4 +505,47 @@ public final class DateTimeUtil {
     public static String formatTime(Date begin, Date end) {
         return formatTime(end.getTime() - begin.getTime());
     }
+
+
+    /**
+     * 是否晚上九点到早上六点之间
+     *
+     * @param date 日期
+     * @return 是否为晚上
+     */
+    public static boolean isNight(Date date) {
+        if (null == date) return false;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.get(Calendar.HOUR_OF_DAY) >= 19 || calendar.get(Calendar.HOUR_OF_DAY) < 6;
+    }
+
+
+    public static String formatMilliseconds(long milliseconds) {
+        long totalSeconds = milliseconds / 1000;
+        long seconds = totalSeconds % 60;
+        long minutes = (totalSeconds / 60) % 60;
+        long hours = totalSeconds / 3600;
+
+        if (hours > 0) {
+            return String.format(Locale.CHINA, "%d:%02d:%02d", hours, minutes, seconds);
+        } else {
+            return String.format(Locale.CHINA, "%02d:%02d", minutes, seconds);
+        }
+    }
+
+    public static String formatMilliseconds2(long milliseconds) {
+        long totalSeconds = milliseconds / 1000;
+        long seconds = totalSeconds % 60;
+        long minutes = (totalSeconds / 60) % 60;
+        long hours = totalSeconds / 3600;
+
+        if (hours > 0) {
+            return String.format(Locale.CHINA, "%d小时%02d分钟%02d秒", hours, minutes, seconds);
+        } else if (minutes > 0) {
+            return String.format(Locale.CHINA, "%02d分%02d秒", minutes, seconds);
+        } else {
+            return String.format(Locale.CHINA, "%02d秒", seconds);
+        }
+    }
 }

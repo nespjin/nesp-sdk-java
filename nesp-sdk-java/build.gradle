@@ -47,6 +47,7 @@ dependencies {
 //    implementation 'org.apache.commons:commons-jexl3:3.2.1'
 //    implementation 'org.apache.commons:commons-vfs2:2.9.0'
 //    implementation 'org.apache.commons:commons-email:1.5'
+    implementation 'commons-codec:commons-codec:1.15'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     testImplementation('org.junit.jupiter:junit-jupiter-api:5.8.2')
@@ -74,14 +75,14 @@ targetCompatibility = javaVersionName
 sourceSets {
     main {
         java {
-            exclude 'module-info.java.bak'
+            exclude 'module-info.java'
         }
     }
-    mainModuleInfo { // module-info only
+    mainModule { // module-info only
         java {
-            srcDirs = ['src/main/java']
+            srcDirs = ['src/main/java', 'src/mainModule/java']
             outputDir = file("$buildDir/classes/java/main")
-            include 'module-info.java.bak'
+            include 'module-info.java'
         }
     }
 }
@@ -89,7 +90,7 @@ sourceSets {
 if (JavaVersion.toVersion(sourceCompatibility) == JavaVersion.VERSION_1_8) {
     compileJava.options.compilerArgs.addAll(['--release', '8'])
 } else {
-    classes.dependsOn mainModuleInfoClasses
-    compileMainModuleInfoJava.options.compilerArgs.addAll(['--release', '16'])
+    classes.dependsOn mainModuleClasses
+    compileMainModuleJava.options.compilerArgs.addAll(['--release', '16'])
 }
 

@@ -35,8 +35,8 @@ public final class StorageSizeUtil {
      * @param size    大小
      * @return 格式化后的存储大小
      */
-    public static String formatStorageSize(long size) {
-        return formatStorageSize(size, 2);
+    public static String format(long size) {
+        return format(size, 2);
     }
 
     /**
@@ -44,8 +44,8 @@ public final class StorageSizeUtil {
      * @param units   单位
      * @return 格式化后的存储大小
      */
-    public static String formatStorageSize(long size, String[] units) {
-        return formatStorageSize(size, units, 2);
+    public static String format(long size, String[] units) {
+        return format(size, units, 2);
     }
 
     /**
@@ -53,8 +53,8 @@ public final class StorageSizeUtil {
      * @param decimal 小数点后几位
      * @return 格式化后的存储大小
      */
-    public static String formatStorageSize(long size, int decimal) {
-        return formatStorageSize(size, new String[]{"B", "KB", "MB", "GB", "TB"}, decimal);
+    public static String format(long size, int decimal) {
+        return format(size, new String[]{"B", "KB", "MB", "GB", "TB"}, decimal);
     }
 
     /**
@@ -63,7 +63,7 @@ public final class StorageSizeUtil {
      * @param decimal 小数点后几位
      * @return 格式化后的存储大小
      */
-    public static String formatStorageSize(long size, String[] units, int decimal) {
+    public static String format(long size, String[] units, int decimal) {
         int index = 0;
         float result = size;
         while (result >= 1024 && index < units.length - 1) {
