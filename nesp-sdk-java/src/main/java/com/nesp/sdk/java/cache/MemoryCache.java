@@ -63,7 +63,8 @@ public final class MemoryCache implements Cache {
 
     @Override
     public Boolean getBoolean(final String key) {
-        final Object value = mDataMap.getOrDefault(key, null);
+        Object value;
+        value = (value = mDataMap.get(key)) == null && !mDataMap.containsKey(key) ? null : value;
         if (value instanceof Boolean) {
             return (Boolean) value;
         } else {
@@ -73,7 +74,8 @@ public final class MemoryCache implements Cache {
 
     @Override
     public Byte getByte(final String key) {
-        final Object value = mDataMap.getOrDefault(key, null);
+        Object value;
+        value = (value = mDataMap.get(key)) == null && !mDataMap.containsKey(key) ? null : value;
         if (value instanceof Byte) {
             return (Byte) value;
         } else {
@@ -83,7 +85,8 @@ public final class MemoryCache implements Cache {
 
     @Override
     public Short getShort(final String key) {
-        final Object value = mDataMap.getOrDefault(key, null);
+        Object value;
+        value = (value = mDataMap.get(key)) == null && !mDataMap.containsKey(key) ? null : value;
         if (value instanceof Short) {
             return (Short) value;
         } else {
@@ -93,7 +96,8 @@ public final class MemoryCache implements Cache {
 
     @Override
     public Integer getInt(final String key) {
-        final Object value = mDataMap.getOrDefault(key, null);
+        Object value;
+        value = (value = mDataMap.get(key)) == null && !mDataMap.containsKey(key) ? null : value;
         if (value instanceof Integer) {
             return (Integer) value;
         } else {
@@ -103,7 +107,8 @@ public final class MemoryCache implements Cache {
 
     @Override
     public Long getLong(final String key) {
-        final Object value = mDataMap.getOrDefault(key, null);
+        Object value;
+        value = (value = mDataMap.get(key)) == null && !mDataMap.containsKey(key) ? null : value;
         if (value instanceof Long) {
             return (Long) value;
         } else {
@@ -113,7 +118,8 @@ public final class MemoryCache implements Cache {
 
     @Override
     public Float getFloat(final String key) {
-        final Object value = mDataMap.getOrDefault(key, null);
+        Object value;
+        value = (value = mDataMap.get(key)) == null && !mDataMap.containsKey(key) ? null : value;
         if (value instanceof Float) {
             return (Float) value;
         } else {
@@ -123,7 +129,8 @@ public final class MemoryCache implements Cache {
 
     @Override
     public Double getDouble(final String key) {
-        final Object value = mDataMap.getOrDefault(key, null);
+        Object value;
+        value = (value = mDataMap.get(key)) == null && !mDataMap.containsKey(key) ? null : value;
         if (value instanceof Double) {
             return (Double) value;
         } else {
@@ -133,7 +140,8 @@ public final class MemoryCache implements Cache {
 
     @Override
     public String getString(final String key) {
-        final Object value = mDataMap.getOrDefault(key, null);
+        Object value;
+        value = (value = mDataMap.get(key)) == null && !mDataMap.containsKey(key) ? null : value;
         if (value instanceof String) {
             return (String) value;
         } else {
@@ -144,7 +152,8 @@ public final class MemoryCache implements Cache {
     @Override
     @SuppressWarnings("unchecked")
     public Set<String> getStringSet(final String key) {
-        final Object value = mDataMap.getOrDefault(key, null);
+        Object value;
+        value = (value = mDataMap.get(key)) == null && !mDataMap.containsKey(key) ? null : value;
         if (value instanceof Set) {
             return (Set<String>) value;
         } else {
