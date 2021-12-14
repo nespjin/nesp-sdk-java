@@ -58,13 +58,16 @@ test {
     useJUnitPlatform()
 }
 
-sourceCompatibility = "1.8"
-targetCompatibility = "1.8"
+def javaVersionName = extensions.findByName("android") != null ? "1.8" : "11"
+System.out.println("nesp-sdk-java: set java version to " + javaVersionName)
+
+sourceCompatibility = javaVersionName
+targetCompatibility = javaVersionName
 
 sourceSets {
     main {
         java {
-//            exclude 'module-info.java.bak'
+            exclude 'module-info.java.bak'
         }
     }
     mainModuleInfo { // module-info only
