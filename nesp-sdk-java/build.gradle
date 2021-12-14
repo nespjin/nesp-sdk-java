@@ -58,7 +58,14 @@ test {
     useJUnitPlatform()
 }
 
-def javaVersionName = extensions.findByName("android") != null ? "1.8" : "11"
+def isAndroid = false
+rootProject.subprojects.forEach {
+    if (it.extensions.findByName("android") != null) {
+        isAndroid = true
+    }
+}
+
+def javaVersionName = isAndroid ? "1.8" : "11"
 System.out.println("nesp-sdk-java: set java version to " + javaVersionName)
 
 sourceCompatibility = javaVersionName
