@@ -186,6 +186,7 @@ public final class TextUtil {
      * @return 是否为链接
      */
     public static boolean isUrl(final String text) {
+        if (isEmpty(text)) return false;
         return text.startsWith("https://") || text.startsWith("http://");
     }
 
