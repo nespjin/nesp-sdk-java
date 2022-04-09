@@ -30,23 +30,23 @@ public interface Cache {
 
     void putStringSet(String key, Set<String> value);
 
-    Boolean getBoolean(String key, boolean defValue);
+    Boolean getBoolean(String key);
 
-    Byte getByte(String key, byte defValue);
+    Byte getByte(String key);
 
-    Short getShort(String key, short defValue);
+    Short getShort(String key);
 
-    Integer getInt(String key, int defValue);
+    Integer getInt(String key);
 
-    Long getLong(String key, long defValue);
+    Long getLong(String key);
 
-    Float getFloat(String key, float defValue);
+    Float getFloat(String key);
 
-    Double getDouble(String key, double defValue);
+    Double getDouble(String key);
 
-    String getString(String key, String defValue);
+    String getString(String key);
 
-    Set<String> getStringSet(String key, Set<String> defValue);
+    Set<String> getStringSet(String key);
 
     Map<String, Object> getAll();
 
