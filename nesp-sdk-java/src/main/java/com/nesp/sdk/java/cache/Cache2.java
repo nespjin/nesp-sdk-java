@@ -33,7 +33,7 @@ public abstract class Cache2 implements Cache {
         return getBoolean(key, false);
     }
 
-    abstract Boolean getBoolean(String key, boolean defValue);
+    public abstract Boolean getBoolean(String key, boolean defValue);
 
     @Override
     public Byte getByte(final String key) {
