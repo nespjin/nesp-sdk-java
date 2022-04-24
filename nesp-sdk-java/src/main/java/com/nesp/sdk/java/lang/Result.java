@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022.   NESP Technology.
+ * Copyright (c) 2021-2022.   NESP Technology.
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -15,20 +15,17 @@
  *
  */
 
-package com.nesp.sdk.java.util.property;
+package com.nesp.sdk.java.lang;
+
+import java.io.Serializable;
 
 /**
- * Author: <a href="mailto:1756404649@qq.com">JinZhaolu Email:1756404649@qq.com</a>
- * Time: Created 2021/11/4 下午3:42
+ * Team: NESP Technology
+ *
+ * @author <a href="mailto:1756404649@qq.com">JinZhaolu Email:1756404649@qq.com</a>
+ * Time: Created 4/25/2022 12:04 AM
  * Description:
  **/
-public class FloatProperty extends ObjectProperty<Float> {
-
-    public FloatProperty() {
-    }
-
-    public FloatProperty(final Float value) {
-        super(value);
-    }
+public class Result<T> implements Serializable {
 
 }
