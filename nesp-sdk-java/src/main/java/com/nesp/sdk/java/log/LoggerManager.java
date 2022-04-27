@@ -1,4 +1,4 @@
-package com.aucma.lang.log;
+package com.nesp.sdk.java.log;
 
 import java.util.WeakHashMap;
 
