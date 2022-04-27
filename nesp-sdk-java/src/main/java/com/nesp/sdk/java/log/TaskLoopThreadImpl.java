@@ -2,6 +2,7 @@ package com.nesp.sdk.java.log;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 class TaskLoopThreadImpl extends Thread implements TaskLoopThread {
 

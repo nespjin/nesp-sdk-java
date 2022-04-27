@@ -15,10 +15,15 @@ public class AndroidConsolePrinter implements Logger.Printer {
     {
         try {
             Class<?> aLogCls = Class.forName("android.util.Log");
-            aLogi = aLogCls.getMethod("i", String.class, String.class, Throwable.class);
-            aLogd = aLogCls.getMethod("d", String.class, String.class, Throwable.class);
-            aLogw = aLogCls.getMethod("w", String.class, String.class, Throwable.class);
-            aLoge = aLogCls.getMethod("e", String.class, String.class, Throwable.class);
+            aLogi = aLogCls.getDeclaredMethod("i", String.class, String.class, Throwable.class);
+            aLogd = aLogCls.getDeclaredMethod("d", String.class, String.class, Throwable.class);
+            aLogw = aLogCls.getDeclaredMethod("w", String.class, String.class, Throwable.class);
+            aLoge = aLogCls.getDeclaredMethod("e", String.class, String.class, Throwable.class);
+
+            aLogi.setAccessible(true);
+            aLogd.setAccessible(true);
+            aLogw.setAccessible(true);
+            aLoge.setAccessible(true);
         } catch (ClassNotFoundException | NoSuchMethodException e) {
             throw new RuntimeException(e);
         }

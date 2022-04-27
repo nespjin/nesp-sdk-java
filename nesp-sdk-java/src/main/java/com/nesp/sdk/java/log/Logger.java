@@ -94,10 +94,26 @@ public interface Logger {
 
         Level getLevel();
 
+        void setFilter(Filter filter);
+
+        Filter getFilter();
+
         void addPrinter(Printer printer);
 
         void removePrinter(Printer printer);
 
         Set<Printer> getPrinters();
+    }
+
+    @FunctionalInterface
+    public interface Filter {
+
+        /**
+         * Check if a given log record should be published.
+         *
+         * @param record a LogRecord
+         * @return true if the log record should be published.
+         */
+        public boolean isLoggable(LogRecord record);
     }
 }

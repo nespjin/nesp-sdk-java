@@ -3,7 +3,6 @@ package com.nesp.sdk.java.log;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -29,9 +28,10 @@ class LoggerImpl implements Logger {
 
     @Override
     public void log(Level level, String message, Throwable t) {
-        if (getConfig().getLevel().compareTo(level) < 0) {
+        if (getConfig().getLevel().compareTo(level) > 0) {
             return;
         }
+
         final StackTraceElement[] trace = Thread.currentThread().getStackTrace();
         StackTraceElement caller = null;
         for (int i = 2, traceLength = trace.length; i < traceLength; i++) {
@@ -88,12 +88,17 @@ class LoggerImpl implements Logger {
         if (myPid == -1) {
             try {
                 final Class<?> processHandleCls = Class.forName("java.lang.ProcessHandle");
-                final Method mcurrent = processHandleCls.getMethod("current");
-                final Method mpid = processHandleCls.getMethod("pid");
+                final Method mcurrent = processHandleCls.getDeclaredMethod("current");
+                mcurrent.setAccessible(true);
+                final Method mpid = processHandleCls.getDeclaredMethod("pid");
+                mpid.setAccessible(true);
                 final Object curProcessHandle = mcurrent.invoke(null);
-                myPid = Optional.ofNullable((Long) mpid.invoke(curProcessHandle)).orElse(-1L);
+                final Long invokeRet = (Long) mpid.invoke(curProcessHandle);
+                if (invokeRet != null) {
+                    myPid = (long) invokeRet;
+                }
             } catch (ClassNotFoundException | IllegalAccessException
-                     | NoSuchMethodException | InvocationTargetException e) {
+                    | NoSuchMethodException | InvocationTargetException e) {
                 e.printStackTrace();
             }
         }
@@ -109,6 +114,10 @@ class LoggerImpl implements Logger {
         record.throwable = t;
 
         record.messageFormatted = format.format(record);
+
+        if (getConfig().getFilter() != null && !getConfig().getFilter().isLoggable(record)) {
+            return;
+        }
 
         final Set<Printer> printers = config.getPrinters();
         if (printers == null || printers.isEmpty()) {

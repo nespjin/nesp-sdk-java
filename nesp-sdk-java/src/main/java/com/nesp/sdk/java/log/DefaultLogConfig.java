@@ -7,6 +7,7 @@ class DefaultLogConfig implements Logger.Config {
 
     private Logger.Format format;
     private Logger.Level level;
+    private Logger.Filter filter;
     private final Set<Logger.Printer> printers = new LinkedHashSet<>();
 
     {
@@ -44,6 +45,16 @@ class DefaultLogConfig implements Logger.Config {
     @Override
     public Logger.Level getLevel() {
         return level == null ? Logger.Level.INFO : level;
+    }
+
+    @Override
+    public void setFilter(Logger.Filter filter) {
+        this.filter = filter;
+    }
+
+    @Override
+    public Logger.Filter getFilter() {
+        return filter;
     }
 
     @Override

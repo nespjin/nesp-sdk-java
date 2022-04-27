@@ -1,6 +1,6 @@
 package com.nesp.sdk.java.log;
 
-class LogRecord {
+public class LogRecord {
     public long time;
     public long pid;
     public Thread thread;

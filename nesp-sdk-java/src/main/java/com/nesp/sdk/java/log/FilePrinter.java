@@ -2,11 +2,14 @@ package com.nesp.sdk.java.log;
 
 import org.apache.commons.io.FileUtils;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.charset.Charset;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Locale;
+import java.util.*;
 
 public class FilePrinter implements Logger.Printer {
 
@@ -158,7 +161,7 @@ public class FilePrinter implements Logger.Printer {
                 assert files != null;
                 final long l = fileNum - logFileMaxCount;
                 for (int i = 0; i < l; i++) {
-                    FileUtils.deleteQuietly(files[i]);
+                    files[i].delete();
                 }
 
                 files = listDirectoryFilesSortByLastModifiedAsc(dir);
