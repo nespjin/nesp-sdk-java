@@ -1,4 +1,4 @@
-package com.nesp.sdk.java.log;
+package com.aucma.lang.log;
 
 import org.apache.commons.io.FileUtils;
 

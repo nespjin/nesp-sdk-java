@@ -1,4 +1,4 @@
-package com.nesp.sdk.java.log;
+package com.aucma.lang.log;
 
 public class LogRecord {
     public long time;

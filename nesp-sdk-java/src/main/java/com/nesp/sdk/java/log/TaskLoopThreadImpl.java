@@ -1,4 +1,4 @@
-package com.nesp.sdk.java.log;
+package com.aucma.lang.log;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
