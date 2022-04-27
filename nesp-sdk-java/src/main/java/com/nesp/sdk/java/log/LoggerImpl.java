@@ -28,7 +28,7 @@ class LoggerImpl implements Logger {
 
     @Override
     public void log(Level level, String message, Throwable t) {
-        if (getConfig().getLevel().compareTo(level) > 0) {
+        if (getConfig().getLevel().compareTo(level) < 0) {
             return;
         }
 
