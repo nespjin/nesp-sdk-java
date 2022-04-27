@@ -66,7 +66,7 @@ rootProject.subprojects.forEach {
     }
 }
 
-def javaVersionName = isAndroid ? "1.8" : "11"
+def javaVersionName = isAndroid ? JavaVersion.VERSION_1_8 : JavaVersion.VERSION_11
 System.out.println("nesp-sdk-java: set java version to " + javaVersionName)
 
 sourceCompatibility = javaVersionName
@@ -81,14 +81,17 @@ sourceSets {
     mainModule { // module-info only
         java {
             srcDirs = ['src/main/java', 'src/mainModule/java']
-            outputDir = file("$buildDir/classes/java/main")
+            if (java.hasProperty('outputDir'))
+                outputDir = file("$buildDir/classes/java/main")
+            if (java.hasProperty('destinationDir'))
+                destinationDirectory.set(file("$buildDir/classes/java/main"))
             include 'module-info.java'
         }
     }
 }
 
-if (JavaVersion.toVersion(sourceCompatibility) == JavaVersion.VERSION_1_8) {
-    compileJava.options.compilerArgs.addAll(['--release', '8'])
+if (JavaVersion.toVersion(sourceCompatibility) == JavaVersion.VERSION_17) {
+    compileJava.options.compilerArgs.addAll(['--release', '17'])
 } else {
 //    classes.dependsOn mainModuleClasses
     compileMainModuleJava.options.compilerArgs.addAll(['--release', '16'])
