@@ -81,7 +81,7 @@ sourceSets {
     mainModule { // module-info only
         java {
             srcDirs = ['src/main/java', 'src/mainModule/java']
-            outputDir = file("$buildDir/classes/java/main")
+            // outputDir = file("$buildDir/classes/java/main")
             include 'module-info.java'
         }
     }
